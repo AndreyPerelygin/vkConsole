@@ -7,7 +7,6 @@ import vk_auth
 
 os.system("clear")
 
-group_id = 1
 app_id = "4925055"
 login = raw_input(u"Enter your login: ")
 password = raw_input(u"Enter your pass: ")
