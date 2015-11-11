@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import urllib2
-import webbrowser
 import vk_auth
 
 os.system("clear")
