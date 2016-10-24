@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import time
 import urllib2
 import vk_auth
 
@@ -35,6 +36,7 @@ class Connect:
 		self.section = "dialogs"
 		dialogs = json.loads(urllib2.urlopen("https://api.vk.com/method/messages.getDialogs?count=10&access_token=%s&v=5.33" % (self.access_token)).read().decode("utf-8"))
 		for item in reversed(dialogs["response"]["items"]):
+			time.sleep(1)
 			resp = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts,online&access_token=%s&v=5.8" % (item["message"]["user_id"],self.access_token)).read().decode("utf-8"))
 			print (resp)
 			user = resp["response"][0]
