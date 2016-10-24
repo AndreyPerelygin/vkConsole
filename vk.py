@@ -25,7 +25,7 @@ class Connect:
 		self.section = "dialog"
 		dialog = json.loads(urllib2.urlopen("https://api.vk.com/method/messages.getHistory?count=20&user_id=%s&access_token=%s&v=5.33" % (self.uid, self.access_token)).read().decode("utf-8"))
 		for item in reversed(dialog["response"]["items"]):
-			user = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts&access_token%s&v=5.8" % (item["from_id"],self.access_token)).read().decode("utf-8"))["response"][0];
+			user = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts&access_token=%s&v=5.8" % (item["from_id"],self.access_token)).read().decode("utf-8"))["response"][0]
 			self.layer+= "%s %s (%s):\n" % (user["first_name"], user["last_name"], item["user_id"])
 			self.layer+= "%s \n" % item["body"]
 			self.layer+= "-------------------------------------------- \n"
@@ -35,7 +35,7 @@ class Connect:
 		self.section = "dialogs"
 		dialogs = json.loads(urllib2.urlopen("https://api.vk.com/method/messages.getDialogs?count=10&access_token=%s&v=5.33" % (self.access_token)).read().decode("utf-8"))
 		for item in reversed(dialogs["response"]["items"]):
-			user = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts,online&access_token%s&v=5.8" % (item["message"]["user_id"],self.access_token)).read().decode("utf-8"))["response"][0];
+			user = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts,online&access_token=%s&v=5.8" % (item["message"]["user_id"],self.access_token)).read().decode("utf-8"))["response"][0]
 			if (user["online"] == 1):
 				user["online"] = "online"
 			else:
