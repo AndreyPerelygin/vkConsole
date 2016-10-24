@@ -38,7 +38,7 @@ class Connect:
 		for item in reversed(dialogs["response"]["items"]):
 			time.sleep(1)
 			resp = json.loads(urllib2.urlopen("https://api.vk.com/method/users.get?user_id=%s&fields=contacts,online&access_token=%s&v=5.8" % (item["message"]["user_id"],self.access_token)).read().decode("utf-8"))
-			print (resp)
+			# print (resp)
 			user = resp["response"][0]
 			if (user["online"] == 1):
 				user["online"] = "online"
